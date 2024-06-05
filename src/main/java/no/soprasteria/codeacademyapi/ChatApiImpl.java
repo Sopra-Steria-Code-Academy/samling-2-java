@@ -9,8 +9,9 @@ import java.util.List;
 
 @RestController
 public class ChatApiImpl implements ChatApi {
+
     @Override
-    public ResponseEntity<List<ChatMessageDTO>> getChats() {
+    public ResponseEntity<List<ChatMessageDTO>> getChats(Integer chatId) {
         return null;
     }
 

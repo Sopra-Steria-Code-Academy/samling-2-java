@@ -9,15 +9,19 @@ import org.springframework.context.annotation.Configuration;
 public class SwaggerConfiguration {
 
     @Bean
-    public GroupedOpenApi publicApi(){
-        return GroupedOpenApi.builder().group("code").pathsToMatch("/hello/**","/chat/**").build();
+    public GroupedOpenApi helloApi(){
+        return GroupedOpenApi.builder().group("hello").pathsToMatch("/hello/**","/chat/**").build();
     }
+//    @Bean
+//    public GroupedOpenApi chatAPI(){
+//        return GroupedOpenApi.builder().group("mysecretchat").pathsToMatch("/chat/**").build();
+//    }
 
     @Bean
     public OpenAPI mySecretChat() {
         return new OpenAPI()
             .info(new Info().title("My secret chat API")
-                .description("With spring and swagger")
+                .description("With spring and swagger and kebab")
                 .version("v0.0.1")
             );
     }

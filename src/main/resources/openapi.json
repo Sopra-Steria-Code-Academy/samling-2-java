@@ -13,8 +13,11 @@
     ],
     "paths": {
         "/chat": {
+            "description": "This is a top description for the entire enpoint chat...",
             "post": {
                 "operationId": "writeChatMessage",
+                "description": "Create a chat message for a chat",
+                "summary": "Returns the created chat message",
                 "tags": [
                     "Chat"
                 ],
@@ -50,13 +53,33 @@
                                 }
                             }
                         }
+                    },
+                    "403": {
+                        "description": "Uautentisert. Du må bruke maskinporten din dust"
+                    },
+                    "500": {
+                        "description": "Doffen har daua"
                     }
                 }
             },
             "get": {
                 "operationId": "getChats",
+                "description": "Get chats for a chat",
+                "summary": "Returns the chat messages for a chat",
                 "tags": [
                     "Chat"
+                ],
+                "parameters": [
+                    {
+                        "name": "chatId",
+                        "description": "The id of a chat spesification",
+                        "in": "query",
+                        "example": "50",
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "required": true
+                    }
                 ],
                 "responses": {
                     "200": {
@@ -71,6 +94,12 @@
                                 }
                             }
                         }
+                    },
+                    "403": {
+                        "description": "Uautentisert. Du må bruke maskinporten din dust"
+                    },
+                    "500": {
+                        "description": "Doffen har daua"
                     }
                 }
             }
@@ -82,13 +111,16 @@
                 "type": "object",
                 "properties": {
                     "author": {
-                        "type": "string"
+                        "type": "string",
+                        "example": "Mozart"
                     },
                     "message": {
-                        "type": "string"
+                        "type": "string",
+                        "example": "Er dritings"
                     },
                     "messageTime": {
-                        "type": "string"
+                        "type": "string",
+                        "example": "2024-01-01T00:00:00Z"
                     }
                 },
                 "required": [
