@@ -1,0 +1,102 @@
+{
+    "openapi": "3.0.3",
+    "info": {
+        "description": "CodeAcademy API",
+        "version": "0.0.1",
+        "title": "CodeAcademy API"
+    },
+    "servers": [
+        {
+            "url": "/",
+            "description": "MyServer"
+        }
+    ],
+    "paths": {
+        "/chat": {
+            "post": {
+                "operationId": "writeChatMessage",
+                "tags": [
+                    "Chat"
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/ChatMessageDTO"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/ChatMessageDTO"
+                                    }
+                                },
+                                "examples": {
+                                    "foo": {
+                                        "value": {
+                                            "message": "Hei",
+                                            "author": "Mozart",
+                                            "messageTime": "I går"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "get": {
+                "operationId": "getChats",
+                "tags": [
+                    "Chat"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/ChatMessageDTO"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "ChatMessageDTO": {
+                "type": "object",
+                "properties": {
+                    "author": {
+                        "type": "string"
+                    },
+                    "message": {
+                        "type": "string"
+                    },
+                    "messageTime": {
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "author",
+                    "message",
+                    "messageTime"
+                ]
+            }
+        }
+    }
+}
