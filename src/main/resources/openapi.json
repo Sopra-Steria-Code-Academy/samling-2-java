@@ -12,7 +12,31 @@
     }
   ],
   "paths": {
-
+    "/chat": {
+      "get":{
+        "operationId": "getChats",
+        "summary": "List all chats",
+        "tags": ["chat"],
+        "responses": {
+          "200": {
+            "description": "List of chats",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ChatMessageDTO"
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Not ok"
+          }
+        }
+      }
+    }
   },
   "components": {
     "schemas": {
@@ -31,12 +55,7 @@
             "type": "string",
             "example": "2024-01-01T00:00:00Z"
           }
-        },
-        "required": [
-          "author",
-          "message",
-          "messageTime"
-        ]
+        }
       }
     }
   }
