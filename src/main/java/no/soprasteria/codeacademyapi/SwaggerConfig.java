@@ -15,6 +15,11 @@ public class SwaggerConfig {
     }
 
     @Bean
+    public GroupedOpenApi chatApi(){
+        return GroupedOpenApi.builder().group("mySecretChatGroup").pathsToMatch("/chat/**").build();
+    }
+
+    @Bean
     public OpenAPI hello() {
         return new OpenAPI()
                 .info(new Info().title("My secret chat API")

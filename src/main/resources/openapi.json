@@ -35,6 +35,34 @@
             "description": "Not ok"
           }
         }
+      },
+      "post": {
+        "summary": "Create a new chat message",
+        "description": "Create message",
+        "operationId": "createChat",
+        "tags": ["chat"],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ChatMessageDTO"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Chat created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ChatMessageDTO"
+                }
+              }
+            }
+          }
+        }
       }
     }
   },
