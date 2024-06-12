@@ -112,17 +112,13 @@
                                 <useGenericResponse>false</useGenericResponse>
                                 <useSwaggerAnnotations>false</useSwaggerAnnotations>
                                 <dateLibrary>java8</dateLibrary>
-                                <throwsException>true</throwsException>
                                 <useTags>true</useTags>
                                 <useSpringBoot3>true</useSpringBoot3>
                                 <skipDefaultInterface >true</skipDefaultInterface >
-                                <!--                                <useBeanValidation>false</useBeanValidation>-->
                                 <useSwaggerUI>true</useSwaggerUI>
                             </configOptions>
-                            <!--<templateDirectory>./src/jaxrstemplates</templateDirectory>-->
+                            <templateResourcePath>${project.basedir}/src/main/java/templates</templateResourcePath>
                             <generateSupportingFiles>false</generateSupportingFiles>
-                            <generateModelTests>false</generateModelTests>
-                            <generateApiTests>false</generateApiTests>
                             <modelPackage>no.soprasteria.generated.models</modelPackage>
                             <apiPackage>no.soprasteria.generated.api</apiPackage>
                             <invokerPackage>no.soprasteria.generated.impl</invokerPackage>
