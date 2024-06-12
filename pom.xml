@@ -55,21 +55,21 @@
         </dependency>
 
         <!-- Prometheus -->
-<!--        <dependency>-->
-<!--            <groupId>io.prometheus</groupId>-->
-<!--            <artifactId>prometheus-metrics-core</artifactId>-->
-<!--            <version>${prometheus.version}</version>-->
-<!--        </dependency>-->
-<!--        <dependency>-->
-<!--            <groupId>io.prometheus</groupId>-->
-<!--            <artifactId>prometheus-metrics-instrumentation-jvm</artifactId>-->
-<!--            <version>${prometheus.version}</version>-->
-<!--        </dependency>-->
-<!--        <dependency>-->
-<!--            <groupId>io.prometheus</groupId>-->
-<!--            <artifactId>prometheus-metrics-exporter-httpserver</artifactId>-->
-<!--            <version>${prometheus.version}</version>-->
-<!--        </dependency>-->
+        <dependency>
+            <groupId>io.prometheus</groupId>
+            <artifactId>prometheus-metrics-core</artifactId>
+            <version>${prometheus.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.prometheus</groupId>
+            <artifactId>prometheus-metrics-instrumentation-jvm</artifactId>
+            <version>${prometheus.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.prometheus</groupId>
+            <artifactId>prometheus-metrics-exporter-httpserver</artifactId>
+            <version>${prometheus.version}</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -90,43 +90,43 @@
                     </excludes>
                 </configuration>
             </plugin>
-<!--            <plugin>-->
-<!--                <groupId>org.openapitools</groupId>-->
-<!--                <artifactId>openapi-generator-maven-plugin</artifactId>-->
-<!--                <version>${openapi.generator.maven.plugin.version}</version>-->
-<!--                <executions>-->
-<!--                    <execution>-->
-<!--                        <id>java</id>-->
-<!--                        <goals>-->
-<!--                            <goal>generate</goal>-->
-<!--                        </goals>-->
-<!--                        <configuration>-->
-<!--                            &lt;!&ndash; Skip Code Generation Parameter &ndash;&gt;-->
-<!--                            <skip>false</skip>-->
-<!--                            <inputSpec>${project.basedir}/src/main/resources/openapi.json</inputSpec>-->
-<!--                            <generateApis>true</generateApis>-->
-<!--                            <generatorName>spring</generatorName>-->
-<!--                            <configOptions>-->
-<!--                                <sourceFolder>/</sourceFolder>-->
-<!--                                <interfaceOnly>true</interfaceOnly>-->
-<!--                                <useGenericResponse>false</useGenericResponse>-->
-<!--                                <useSwaggerAnnotations>false</useSwaggerAnnotations>-->
-<!--                                <dateLibrary>java8</dateLibrary>-->
-<!--                                <useTags>true</useTags>-->
-<!--                                <useSpringBoot3>true</useSpringBoot3>-->
-<!--                                <skipDefaultInterface >true</skipDefaultInterface >-->
-<!--                                <useSwaggerUI>true</useSwaggerUI>-->
-<!--                            </configOptions>-->
-<!--                            <templateResourcePath>${project.basedir}/src/main/java/templates</templateResourcePath>-->
-<!--                            <generateSupportingFiles>false</generateSupportingFiles>-->
-<!--                            <modelPackage>no.soprasteria.generated.models</modelPackage>-->
-<!--                            <apiPackage>no.soprasteria.generated.api</apiPackage>-->
-<!--                            <invokerPackage>no.soprasteria.generated.impl</invokerPackage>-->
-<!--                            <output>${project.basedir}/src/main/java/</output>-->
-<!--                        </configuration>-->
-<!--                    </execution>-->
-<!--                </executions>-->
-<!--            </plugin>-->
+            <plugin>
+                <groupId>org.openapitools</groupId>
+                <artifactId>openapi-generator-maven-plugin</artifactId>
+                <version>${openapi.generator.maven.plugin.version}</version>
+                <executions>
+                    <execution>
+                        <id>java</id>
+                        <goals>
+                            <goal>generate</goal>
+                        </goals>
+                        <configuration>
+                            <!-- Skip Code Generation Parameter -->
+                            <skip>false</skip>
+                            <inputSpec>${project.basedir}/src/main/resources/openapi.json</inputSpec>
+                            <generateApis>true</generateApis>
+                            <generatorName>spring</generatorName>
+                            <configOptions>
+                                <sourceFolder>/</sourceFolder>
+                                <interfaceOnly>true</interfaceOnly>
+                                <useGenericResponse>false</useGenericResponse>
+                                <useSwaggerAnnotations>false</useSwaggerAnnotations>
+                                <dateLibrary>java8</dateLibrary>
+                                <useTags>true</useTags>
+                                <useSpringBoot3>true</useSpringBoot3>
+                                <skipDefaultInterface >true</skipDefaultInterface >
+                                <useSwaggerUI>true</useSwaggerUI>
+                            </configOptions>
+                            <templateResourcePath>${project.basedir}/src/main/java/templates</templateResourcePath>
+                            <generateSupportingFiles>false</generateSupportingFiles>
+                            <modelPackage>no.soprasteria.generated.models</modelPackage>
+                            <apiPackage>no.soprasteria.generated.api</apiPackage>
+                            <invokerPackage>no.soprasteria.generated.impl</invokerPackage>
+                            <output>${project.basedir}/src/main/java/</output>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
         </plugins>
     </build>
 
