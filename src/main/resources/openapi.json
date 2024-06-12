@@ -140,6 +140,27 @@
                     "message",
                     "messageTime"
                 ]
+            },
+            "ChatMessageExtendedDTO": {
+                "type": "object",
+                "allOf": [
+                    {
+                        "$ref": "#/components/schemas/ChatMessageDTO"
+                    },
+                    {
+                        "properties": {
+                            "isDead": {
+                                "type": "boolean",
+                                "example": "true"
+                            }
+                        }
+                    }
+                ],
+                "required": [
+                    "author",
+                    "message",
+                    "messageTime"
+                ]
             }
         }
     }
