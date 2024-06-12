@@ -123,4 +123,15 @@
   }
   }} }```
 - Link til der mustache defaults ligger: https://github.com/OpenAPITools/openapi-generator/tree/v7.3.0/modules/openapi-generator/src/main/resources
-- 
+
+# Metrikker
+
+- `public class Metrics {
+  public static void init() throws IOException {
+  JvmMetrics.builder().register();
+  HTTPServer.builder()
+  .port(25086)
+  .buildAndStart();
+  }
+  }`
+- `public static Gauge numberOfGets = Gauge.builder().name("numberOfGets").register();`
