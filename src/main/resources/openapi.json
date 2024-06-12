@@ -37,19 +37,7 @@
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "type": "array",
-                                    "items": {
-                                        "$ref": "#/components/schemas/ChatMessageDTO"
-                                    }
-                                },
-                                "examples": {
-                                    "foo": {
-                                        "value": {
-                                            "message": "Hei",
-                                            "author": "Mozart",
-                                            "messageTime": "I går"
-                                        }
-                                    }
+                                    "$ref": "#/components/schemas/ChatMessageDTO"
                                 }
                             }
                         }
@@ -100,6 +88,29 @@
                     },
                     "500": {
                         "description": "Doffen har daua"
+                    }
+                }
+            },
+            "delete": {
+                "description": "Delete a chag msg",
+                "tags": ["Chat"],
+                "summary": "Use this endpoint to delete av chatMessage",
+                "parameters": [
+                    {
+                        "name": "chatId",
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "in": "query",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Ok"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
                     }
                 }
             }

@@ -10,12 +10,12 @@ public class SwaggerConfiguration {
 
     @Bean
     public GroupedOpenApi helloApi(){
-        return GroupedOpenApi.builder().group("hello").pathsToMatch("/hello/**","/chat/**").build();
+        return GroupedOpenApi.builder().group("hello").pathsToMatch("/hello/**").build();
     }
-//    @Bean
-//    public GroupedOpenApi chatAPI(){
-//        return GroupedOpenApi.builder().group("mysecretchat").pathsToMatch("/chat/**").build();
-//    }
+    @Bean
+    public GroupedOpenApi chatAPI(){
+        return GroupedOpenApi.builder().group("mysecretchat").pathsToMatch("/chat/**").build();
+    }
 
     @Bean
     public OpenAPI mySecretChat() {
