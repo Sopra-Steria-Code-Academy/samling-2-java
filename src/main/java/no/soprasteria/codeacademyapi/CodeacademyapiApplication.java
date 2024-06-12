@@ -2,15 +2,13 @@ package no.soprasteria.codeacademyapi;
 
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.parameters.RequestBody;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Random;
 
@@ -40,8 +38,8 @@ public class CodeacademyapiApplication {
     }
 
     @RequestMapping(value = "/world/remove", method = RequestMethod.DELETE, produces = "text/plain")
-    public ResponseEntity<String> deleteBooks() {
-        return ResponseEntity.ok("I have deleted the book");
+    public ResponseEntity<String> deleteBooks(@RequestParam Integer bookId) {
+        return ResponseEntity.ok("I have deleted the book with id " + bookId);
     }
     @Operation(summary = "Create a book")
     @ApiResponses(value = {
@@ -50,8 +48,7 @@ public class CodeacademyapiApplication {
             @ApiResponse(responseCode = "500", description = "Failed to create book.",
                     content = @Content(mediaType = "application/json"))})
     @RequestMapping(value = "/book/create", method = RequestMethod.PUT, produces = "application/json")
-    public ResponseEntity<Book> createBook() {
-        Book book = new Book("I have a dream", "Stalin", 2019);
+    public ResponseEntity<Book> createBook(@RequestBody Book book) {
         Random random = new Random();
         int myRandomValuye = random.nextInt(0, 10);
         if (myRandomValuye > 5) {
