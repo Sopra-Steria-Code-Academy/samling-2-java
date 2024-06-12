@@ -166,6 +166,8 @@ public interface {{classname}} {
         {{#vendorExtensions.x-tags.size}}
         tags = { {{#vendorExtensions.x-tags}}"{{tag}}"{{^-last}}, {{/-last}}{{/vendorExtensions.x-tags}} },
         {{/vendorExtensions.x-tags.size}}
+        {{#vendorExtensions.x-magnus}}//kult{{/vendorExtensions.x-magnus}}
+
         responses = {
             {{#responses}}
             @ApiResponse(responseCode = {{#isDefault}}"default"{{/isDefault}}{{^isDefault}}"{{{code}}}"{{/isDefault}}, description = "{{{message}}}"{{#baseType}}, content = {

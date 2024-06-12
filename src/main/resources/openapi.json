@@ -21,6 +21,7 @@
                 "tags": [
                     "Chat"
                 ],
+                "x-magnus": true,
                 "requestBody": {
                     "required": true,
                     "content": {
