@@ -1,31 +1,32 @@
 package no.soprasteria.codeacademyapi;
 
-import lombok.extern.slf4j.Slf4j;
 import no.soprasteria.generated.api.ChatApi;
 import no.soprasteria.generated.models.ChatMessageDTO;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.time.OffsetDateTime;
 import java.util.List;
 
 @RestController
 public class ChatApiImpl implements ChatApi {
-    private static final Logger log = LoggerFactory.getLogger(ChatApiImpl.class);
 
     @Override
-    public ResponseEntity<ChatMessageDTO> createChat(ChatMessageDTO chatMessageDTO) {
-        log.info("Chat created {}", chatMessageDTO);
-        return ResponseEntity.ok(chatMessageDTO);
+    public ResponseEntity<Void> chatDelete(Integer chatId) {
+        if (chatId > 10){
+            return ResponseEntity.status(401).build();
+        }
+        return ResponseEntity.status(200).build();
     }
 
     @Override
-    public ResponseEntity<List<ChatMessageDTO>> getChats() {
-        ChatMessageDTO dto = new ChatMessageDTO()
-                .message("Dette er en chat melding")
-                .author("Magnus")
-                .messageTime("now");
-        return ResponseEntity.ok(List.of(dto));
+    public ResponseEntity<List<ChatMessageDTO>> getChats(Integer chatId) {
+        ChatMessageDTO msg = new ChatMessageDTO().message("Hei").messageTime(OffsetDateTime.now().toString()).author("Magnus");
+        return ResponseEntity.ok(List.of(msg));
+    }
+
+    @Override
+    public ResponseEntity<ChatMessageDTO> writeChatMessage(ChatMessageDTO chatMessageDTO) {
+        return ResponseEntity.ok(chatMessageDTO);
     }
 }

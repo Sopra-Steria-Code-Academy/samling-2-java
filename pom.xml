@@ -117,7 +117,7 @@
                                 <skipDefaultInterface >true</skipDefaultInterface >
                                 <useSwaggerUI>true</useSwaggerUI>
                             </configOptions>
-<!--                            <templateResourcePath>${project.basedir}/src/main/java/templates</templateResourcePath>-->
+                            <templateResourcePath>${project.basedir}/src/main/java/templates</templateResourcePath>
                             <generateSupportingFiles>false</generateSupportingFiles>
                             <modelPackage>no.soprasteria.generated.models</modelPackage>
                             <apiPackage>no.soprasteria.generated.api</apiPackage>
