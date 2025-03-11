@@ -1,5 +1,5 @@
 # Spring
-- Vis at endepunktet fungerer
+- Vis at endepunktet fungerer.
 - Lag et nytt POST endepunkt som lager en Book.
 - `@RequestMapping(value = "/book/create", method = RequestMethod.PUT, produces = "application/json")
   public ResponseEntity<Book> createBook(@RequestBody Book book) {`
