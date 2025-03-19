@@ -2,6 +2,7 @@ package no.soprasteria.codeacademyapi;
 
 import no.soprasteria.generated.api.ChatApi;
 import no.soprasteria.generated.models.ChatMessageDTO;
+import no.soprasteria.generated.models.NewChatMessageDTO;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -29,6 +30,11 @@ public class ChatApiImpl implements ChatApi {
     public ResponseEntity<List<ChatMessageDTO>> listAllChats() {
         ChatMessageDTO msg = new ChatMessageDTO().message("Hei").messageTime(OffsetDateTime.now().toString()).author("Magnus");
         return ResponseEntity.ok(List.of(msg));
+    }
+
+    @Override
+    public ResponseEntity<ChatMessageDTO> writeChatMessage(NewChatMessageDTO newChatMessageDTO) {
+        return null;
     }
 
     @Override

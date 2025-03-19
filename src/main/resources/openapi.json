@@ -58,7 +58,7 @@
                     "content": {
                         "application/json": {
                             "schema": {
-                                "$ref": "#/components/schemas/ChatMessageDTO"
+                                "$ref": "#/components/schemas/NewChatMessageDTO"
                             }
                         }
                     }
