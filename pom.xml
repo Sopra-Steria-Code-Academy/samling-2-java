@@ -19,6 +19,7 @@
         <openapi.generator.maven.plugin.version>7.2.0</openapi.generator.maven.plugin.version>
         <openapi.generator.typescript.fetch.api>0.6.0</openapi.generator.typescript.fetch.api>
         <jackson.databind.version>0.2.6</jackson.databind.version>
+        <maven.dependency.plugin.version>3.6.1</maven.dependency.plugin.version>
     </properties>
     <dependencies>
         <dependency>
@@ -140,6 +141,23 @@
                             <typeMappings>
                                 <typeMapping>Date=string</typeMapping>
                             </typeMappings>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-dependency-plugin</artifactId>
+                <version>${maven.dependency.plugin.version}</version>
+                <executions>
+                    <execution>
+                        <phase>initialize</phase>
+                        <goals>
+                            <goal>copy-dependencies</goal>
+                        </goals>
+                        <configuration>
+                            <outputDirectory>${project.build.directory}/lib</outputDirectory>
+                            <includeScope>compile</includeScope>
                         </configuration>
                     </execution>
                 </executions>
