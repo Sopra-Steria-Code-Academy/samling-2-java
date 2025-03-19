@@ -20,7 +20,13 @@ public class ChatApiImpl implements ChatApi {
     }
 
     @Override
-    public ResponseEntity<List<ChatMessageDTO>> getChats(Integer chatId) {
+    public ResponseEntity<ChatMessageDTO> getChatByPathParamId(Integer chatId) {
+        ChatMessageDTO msg = new ChatMessageDTO().id(chatId).message("Hei").messageTime(OffsetDateTime.now().toString()).author("Magnus");
+        return ResponseEntity.ok(msg);
+    }
+
+    @Override
+    public ResponseEntity<List<ChatMessageDTO>> listAllChats() {
         ChatMessageDTO msg = new ChatMessageDTO().message("Hei").messageTime(OffsetDateTime.now().toString()).author("Magnus");
         return ResponseEntity.ok(List.of(msg));
     }
