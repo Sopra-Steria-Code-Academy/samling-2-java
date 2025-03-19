@@ -10,7 +10,7 @@ public class SwaggerConfiguration {
 
     @Bean
     public GroupedOpenApi helloApi(){
-        return GroupedOpenApi.builder().group("hello").pathsToMatch("/hello/**").build();
+        return GroupedOpenApi.builder().group("hello").pathsToMatch("/api/v1/hello/**").build();
     }
     @Bean
     public GroupedOpenApi chatAPI(){
@@ -20,7 +20,7 @@ public class SwaggerConfiguration {
     @Bean
     public OpenAPI mySecretChat() {
         return new OpenAPI()
-            .info(new Info().title("My secret chat API")
+            .info(new Info().title("My Code Academy API")
                 .description("With spring and swagger and kebab")
                 .version("v0.0.1")
             );

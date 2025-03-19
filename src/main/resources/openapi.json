@@ -13,7 +13,7 @@
     ],
     "paths": {
         "/chat": {
-            "description": "This is a top description for the entire enpoint chat...",
+            "description": "This is a top description for the entire endpoint chat...",
             "post": {
                 "operationId": "writeChatMessage",
                 "description": "Create a chat message for a chat",
