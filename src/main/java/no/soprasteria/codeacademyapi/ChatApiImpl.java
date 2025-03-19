@@ -2,14 +2,18 @@ package no.soprasteria.codeacademyapi;
 
 import no.soprasteria.generated.api.ChatApi;
 import no.soprasteria.generated.models.ChatMessageDTO;
+import no.soprasteria.generated.models.NewChatMessageDTO;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.time.OffsetDateTime;
 import java.util.List;
+import java.util.Random;
 
 @RestController
 public class ChatApiImpl implements ChatApi {
+
+    private final Random random = new Random();
 
     @Override
     public ResponseEntity<Void> chatDelete(Integer chatId) {
@@ -32,7 +36,12 @@ public class ChatApiImpl implements ChatApi {
     }
 
     @Override
-    public ResponseEntity<ChatMessageDTO> writeChatMessage(ChatMessageDTO chatMessageDTO) {
-        return ResponseEntity.ok(chatMessageDTO);
+    public ResponseEntity<ChatMessageDTO> writeChatMessage(NewChatMessageDTO chatMessageDTO) {
+        //persist stuff
+        return ResponseEntity.ok(from(chatMessageDTO));
+    }
+
+    private ChatMessageDTO from(NewChatMessageDTO chatMessageDTO){
+        return new ChatMessageDTO().id(random.nextInt()).message(chatMessageDTO.getMessage()).messageTime(chatMessageDTO.getMessageTime()).author(chatMessageDTO.getAuthor());
     }
 }
