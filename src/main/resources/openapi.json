@@ -12,6 +12,38 @@
         }
     ],
     "paths": {
+        "/chat/list": {
+            "description": "This is a top description for the entire endpoint chat list...",
+            "get": {
+                "operationId": "listAllChats",
+                "description": "Lists all chats available for the user",
+                "summary": "Returns a list of chats",
+                "tags": [
+                    "Chat"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/ChatMessageDTO"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "403": {
+                        "description": "Uautentisert. Du må bruke maskinporten din dust"
+                    },
+                    "500": {
+                        "description": "Doffen har daua"
+                    }
+                }
+            }
+        },
         "/chat": {
             "description": "This is a top description for the entire endpoint chat...",
             "post": {
@@ -21,7 +53,6 @@
                 "tags": [
                     "Chat"
                 ],
-                "x-magnus": true,
                 "requestBody": {
                     "required": true,
                     "content": {
@@ -39,47 +70,6 @@
                             "application/json": {
                                 "schema": {
                                     "$ref": "#/components/schemas/ChatMessageDTO"
-                                }
-                            }
-                        }
-                    },
-                    "403": {
-                        "description": "Uautentisert. Du må bruke maskinporten din dust"
-                    },
-                    "500": {
-                        "description": "Doffen har daua"
-                    }
-                }
-            },
-            "get": {
-                "operationId": "getChats",
-                "description": "Get chats for a chat",
-                "summary": "Returns the chat messages for a chat",
-                "tags": [
-                    "Chat"
-                ],
-                "parameters": [
-                    {
-                        "name": "chatId",
-                        "description": "The id of a chat spesification",
-                        "in": "query",
-                        "example": "50",
-                        "schema": {
-                            "type": "integer"
-                        },
-                        "required": true
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "OK",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "type": "array",
-                                    "items": {
-                                        "$ref": "#/components/schemas/ChatMessageDTO"
-                                    }
                                 }
                             }
                         }
@@ -115,11 +105,62 @@
                     }
                 }
             }
+        },
+        "/chat/{chatId}": {
+            "get": {
+                "operationId": "getChatByPathParamId",
+                "tags": ["Chat"],
+                "summary": "Use this endpoint to get chat by id in path param in URL",
+                "parameters": [
+                    {
+                        "name": "chatId",
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Ok",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ChatMessageDTO"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    }
+                }
+            }
         }
     },
     "components": {
         "schemas": {
             "ChatMessageDTO": {
+                "type": "object",
+                "allOf": [
+                    {
+                        "$ref": "#/components/schemas/NewChatMessageDTO"
+                    },
+                    {
+                        "properties": {
+                            "id": {
+                                "type": "integer",
+                                "example": "1"
+                            }
+                        }
+                    }
+                ],
+                "required": [
+                    "id"
+                ]
+            },
+            "NewChatMessageDTO": {
                 "type": "object",
                 "properties": {
                     "author": {
@@ -135,27 +176,6 @@
                         "example": "2024-01-01T00:00:00Z"
                     }
                 },
-                "required": [
-                    "author",
-                    "message",
-                    "messageTime"
-                ]
-            },
-            "ChatMessageExtendedDTO": {
-                "type": "object",
-                "allOf": [
-                    {
-                        "$ref": "#/components/schemas/ChatMessageDTO"
-                    },
-                    {
-                        "properties": {
-                            "isDead": {
-                                "type": "boolean",
-                                "example": "true"
-                            }
-                        }
-                    }
-                ],
                 "required": [
                     "author",
                     "message",
