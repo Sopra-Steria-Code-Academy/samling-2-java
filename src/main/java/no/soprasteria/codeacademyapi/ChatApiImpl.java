@@ -16,7 +16,7 @@ public class ChatApiImpl implements ChatApi {
     private final Random random = new Random();
 
     @Override
-    public ResponseEntity<Void> chatDelete(Integer chatId) {
+    public ResponseEntity<Void> deleteChatById(Integer chatId) {
         if (chatId > 10){
             return ResponseEntity.status(401).build();
         }
