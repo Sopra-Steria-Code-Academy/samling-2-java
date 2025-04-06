@@ -1,0 +1,17 @@
+# Oppgaver
+- Lag deg et nytt API i openapi fila som heter "Car"
+- Definer en DTO som heter "CarDTO". Den skal ha feltene 
+  - "id" av typen integer,
+  - "brand" skal være en ENUM med 3-4 forskjellige typer, f.eks BMW og VW,
+  - "name" av typen string, f.eks "Passat"
+  - "price" av typen integer
+  - "color" av typen string
+- Lag et endepunkt som henter en bil basert på en ID og returnerer en CarDTO. Legg på eksempler og gode responser av forskjellige http verdier
+- Lag et endepunkt som returnerer en liste av CarDTO'er
+- Lag et endepunkt som sletter en bil basert på en ID i queryParam
+- Lag et endepunkt som oppdaterer felter på en bil, f.eks color eller price basert på requestBody
+- Lag et endepunkt som henter alle biler basert på en farge eller en maksimumspris. Bruk queryParam i endepunktet.
+- Lag et endepunkt som henter alle bilder av typen BMW. Bruk enumen du laget tidligere
+- Oppdater SwaggerConfiguration slik at det nye API'et ditt vises i swagger dokumentasjonen.
+- Test endepunktene dine med postman. Kan du importerer openapi definisjonen rett inn i postman som en collection?
+- Test endepunktene dine med intellij sin http.request funksjon.
